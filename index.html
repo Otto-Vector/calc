@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Калькулятор золотого сечения</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			
+			body {
+				background-color: #f0f0f0;
+				margin: 0;
+				padding: 0;
+			}
+
+			center {
+				padding: 25px;
+				background-color: yellow;
+				width: 61%;
+				margin: 0 auto;
+			}
+
+			header {
+				margin: 10px;
+				max-width: 49%;
+			}
+
+			input {
+				text-align: center;
+				margin:0 auto;
+			}
+			
+			div {
+				padding: 2px 0;
+				margin: 0;
+			}
+			
+			.output {
+				display: flex;
+				flex-wrap: wrap;
+				margin: 10px;
+				width: 61%;
+				background-color: gray;
+			}
+
+			.left {
+				width: 39%;
+				background-color: green;
+			}
+
+			.right {
+				width: 61%;
+				background-color: blue;
+			}
+
+			.width {
+				width: 100%;
+				background-color: red;
+			}
+
+			.bold {
+				font-weight: bold;
+			}
+
+
+		</style>
+	</head>
+
+	<body>
+		<center>
+			
+			<header>
+				<input type="number" id="value_" name="value_" value = "">
+			</header>
+			
+			<div class = 'output'>
+				<div class = 'left bold'>0</div>
+				<div class = 'right'>0</div>
+				<div class = 'width'>100</div>
+			</div>
+
+			<div class = 'output'>
+				<div class = 'left'>0</div>
+				<div class = 'right bold'>0</div>
+				<div class = 'width'>101</div>
+			</div>
+
+			<div class = 'output'>
+				<div class = 'left'>0</div>
+				<div class = 'right'>0</div>
+				<div class = 'width bold'>102</div>
+			</div>
+		</center>
+			
+
+		<script>
+
+			 
+			window.onload = init();
+			
+
+			function init() {
+
+				let inp = 0
+				let left = document.getElementsByClassName('left')
+				let right = document.getElementsByClassName('right')
+				let width = document.getElementsByClassName('width')
+				let inputDom = document.getElementById('value_')
+				const koef = 1.618034
+				
+				let now,mnog,minus,plus,div,minusDiv;
+
+				inputDom.oninput = function() {
+					now = +inputDom.value
+					mnog = (now * koef).toFixed(3)
+					minus = (+mnog - now).toFixed(3)
+					plus = (+mnog + now).toFixed(3)
+					div = (now / koef).toFixed(3)
+					minusDiv = (now - +div).toFixed(3)
+					
+					left[0].innerHTML = now
+					right[0].innerHTML = minus
+					width[0].innerHTML = mnog
+
+					left[1].innerHTML = mnog
+					right[1].innerHTML = now
+					width[1].innerHTML = plus
+
+					left[2].innerHTML = div
+					right[2].innerHTML = minusDiv
+					width[2].innerHTML = now					
+				}
+			}
+
+		</script>
+
+	</body>
+</html>
